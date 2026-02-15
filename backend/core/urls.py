@@ -19,6 +19,12 @@ from django.urls import path
 from django.urls import path
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+from django.urls import path, include
+
 
 @api_view(['GET'])
 def health(request):
@@ -31,4 +37,16 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
    # path('mohamed/', mohamed),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/products/', include('products.urls')),
+    path('api/users/', include('users.urls')),
+    path('api/cart/', include('cart.urls')),
+    path('api/orders/', include('orders.urls')),
+    path('api/wishlist/', include('wishList.urls')),
+    path('api/reviews/', include('reviews.urls')),
+
 ]
+
+
+
