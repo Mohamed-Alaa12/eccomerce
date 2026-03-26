@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج | CrownMob</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+
+    <div id="search-overlay" class="search-overlay">
+        <div class="search-content">
+            <span class="close-search" onclick="toggleSearch()">×</span>
+            <input type="text" placeholder="ابحث عن منتج..." id="search-input">
+            <button onclick="performSearch()">بحث</button>
+        </div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html" style="color: white; text-decoration: none;">CrownMob</a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" data-lang="home">الرئيسية</a></li>
+            <li><a href="#" class="active" data-lang="store">المتجر</a></li>
+            <li><a href="#" data-lang="contact">اتصل بنا</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+        <span class="slider">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+        </span>
+        </label>
+            <button id="lang-btn" class="lang-btn" onclick="toggleLanguage()">
+                <span class="lang-text">EN</span>
+            </button>
+
+            <div class="search-icon" onclick="toggleSearch()">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <div class="cart-icon" onclick="toggleCartPanel()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="badge" id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container" id="product-container">
+        <div class="loading-spinner">جاري التحميل...</div>
+    </div>
+
+    <div class="related-products animate__animated animate__fadeInUp">
+        <h2 data-lang="relatedTitle">منتجات قد تعجبك</h2>
+        <div class="related-grid" id="related-grid">
+            </div>
+    </div>
+<!-- CART PANEL -->
+<div id="cart-panel" class="cart-panel">
+  <div class="cart-header">
+    <h3>🛒 سلة المشتريات</h3>
+    <span class="close-cart" onclick="toggleCartPanel()">✖</span>
+  </div>
+
+  <div id="cart-items" class="cart-items">
+    <p class="empty">السلة فارغة</p>
+  </div>
+
+  <div class="cart-footer">
+    <div class="total">
+      الإجمالي: <span id="cart-total">0</span> ج
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">إتمام الشراء</button>
+  </div>
+</div>
+
+<!-- اتمام الشراء -->
+<div id="checkout-modal" class="checkout-modal">
+    <div class="checkout-content">
+        <span class="close-modal" onclick="closeCheckout()">&times;</span>
+        
+        <div class="modal-header">
+            <h2>إتمام الطلب والدفع</h2>
+        </div>
+
+        <div class="modal-body">
+            
+            <div class="section-title">1. بيانات الشحن والتواصل</div>
+            <div class="common-fields">
+                <input type="text" id="cust-name" placeholder="الاسم رباعي" required>
+                <input type="tel" id="cust-phone" placeholder="رقم الموبايل الأساسي" required>
+                <input type="email" id="cust-email" placeholder="البريد الإلكتروني (اختياري)">
+                <input type="text" id="cust-address" placeholder="العنوان بالتفصيل (المحافظة - المنطقة - الشارع)" required>
+            </div>
+
+            <div class="section-title">2. اختر وسيلة الدفع</div>
+            <div class="payment-methods-grid">
+                <label class="method-box">
+                    <input type="radio" name="payment" value="cash" checked onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>دفع عند الاستلام</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="valu" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <span style="font-weight:900; color:#00b894;">valU</span>
+                        <span>تقسيط فاليو</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="halan" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <span style="font-weight:900; color:#eb3b5a;">Halan</span>
+                        <span>تقسيط حالا</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="instapay" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <i class="fas fa-qrcode"></i>
+                        <span>InstaPay</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="vodafone" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>فودافون كاش</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="payment-details-container">
+                
+                <div id="details-cash" class="details-section active">
+                    <p class="info-msg">سيتم تحصيل المبلغ بالكامل نقداً عند توصيل الطلب لعنوانك.</p>
+                </div>
+
+                <div id="details-valu" class="details-section">
+                    <input type="text" placeholder="الاسم المسجل في فاليو">
+                    <input type="tel" placeholder="رقم موبايل حساب فاليو">
+                    <input type="number" placeholder="الرقم القومي (14 رقم)">
+                </div>
+
+                <div id="details-halan" class="details-section">
+                    <input type="text" placeholder="الاسم المسجل في حالا">
+                    <input type="tel" placeholder="رقم موبايل حساب حالا">
+                    <input type="number" placeholder="الرقم القومي (14 رقم)">
+                </div>
+
+                <div id="details-instapay" class="details-section">
+                    <p class="transfer-info">يرجى التحويل على عنوان الدفع التالي:<br> <strong>username@instapay</strong></p>
+                    <input type="text" placeholder="عنوان الدفع الخاص بك (Payment Address)">
+                    <input type="text" placeholder="رقم العملية المرجعي (Transaction ID)">
+                </div>
+
+                <div id="details-vodafone" class="details-section">
+                    <p class="transfer-info">يرجى التحويل على الرقم: <strong>010XXXXXXXX</strong></p>
+                    <input type="tel" placeholder="رقم المحفظة المحول منها">
+                    <p style="font-size:12px; color:#666;">قم بإرفاق سكرين شوت للتحويل (اختياري)</p>
+                    <input type="file" accept="image/*">
+                </div>
+
+            </div>
+
+            <div class="checkout-footer">
+                <div class="coupon-area">
+                    <input type="text" id="coupon-code" placeholder="كود الخصم">
+                    <button onclick="applyCoupon()">تطبيق</button>
+                </div>
+                <div class="total-area">
+                    <span>الإجمالي:</span>
+                    <span id="final-total">0 ج.م</span>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="submitOrder()">تأكيد الطلب الآن</button>
+        </div>
+    </div>
+</div>
+
+
+
+    
+    
+    <footer>
+        <p data-lang="footerText">جميع الحقوق محفوظة &copy; 2026 CrownMob</p>
+    </footer>
+
+    <script src="product.js"></script>
+
+</body>
+</html>

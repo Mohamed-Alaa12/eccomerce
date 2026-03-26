@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="auto">
+<head>
+  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrownMob - Electronics Store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="D:\website store\style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<!-- NAVBAR -->
+<nav class="navbar">
+  
+  <!-- Logo -->
+  <div class="logo">
+    <a href="index.html">CrownMob</a>
+  </div>
+
+  <!-- Links -->
+  <ul class="nav-links">
+
+    <li><a href="index.html">الرئيسية</a></li>
+
+    <!-- Products Dropdown -->
+    <li class="dropdown">
+      <a href="#">الموبايلات ▾</a>
+      <ul class="dropdown-menu">
+        <li onclick="filterBrand('apple')"><a href="#products">Apple</a></li>
+        <li onclick="filterBrand('samsung')"><a href="#products">Samsung</a></li>
+        <li onclick="filterBrand('xiaomi')"><a href="#products">Xiaomi</a></li>
+        <li onclick="filterBrand('oppo')"><a href="#products">Oppo</a></li>
+        <li onclick="filterBrand('Huawei')"><a href="#products">Huawei</a></li>
+      </ul>
+    </li>
+
+    <!-- Accessories Dropdown -->
+    <li class="dropdown">
+      <a href="#">الإكسسوارات ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="#">AirPods</a></li>
+        <li><a href="#">Covers</a></li>
+        <li><a href="#">Chargers</a></li>
+      </ul>
+    </li>
+
+  </ul>
+
+  <!-- Right Side -->
+  <div class="nav-right">
+    <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle" onclick="toggleTheme()">
+        <span class="slider">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+        </span>
+    </label>
+    <button class="lang-btn" onclick="toggleLanguage()">AR</button>
+
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </div>
+    <div id="user-auth-area">
+    <button class="login-btn" onclick="openLoginPage()">تسجيل الدخول</button>
+</div>
+  </div>
+
+
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-box">
+    <h2>خصومات قوية على الموبايلات</h2>
+    <p>أفضل الأسعار – تقسيط مريح</p>
+    <button onclick="scrollToProducts()">تسوق الآن</button>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <h2>أحدث المنتجات</h2>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="ابحث عن منتج...">
+  </div>
+
+  <!-- Brand Filter -->
+  <div class="brand-list">
+    <div onclick="filterBrand('Apple')">Apple</div>
+    <div onclick="filterBrand('samsung')">Samsung</div>
+    <div onclick="filterBrand('xiaomi')">Xiaomi</div>
+    <div onclick="filterBrand('oppo')">Oppo</div>
+    <div onclick="filterBrand('Huawei')">Huawei</div>
+    <div onclick="filterBrand('all')">All</div>
+  </div>
+
+  <div class="products-grid">
+    <!-- منتجات Apple -->
+      <div class="product-card" data-brand="apple">
+      <img src="D:\website store\images\iphone\17pro max.jpg" alt="Iphone 17 Pro Max">
+      <h3>Iphone 17 Pro Max</h3>
+      <p class="price">93,000 ج</p>
+      <button onclick="addToCart('Iphone 17 Pro Max', 43000)">أضف للسلة</button>
+     <a href="product.html?id=1" class="btn">عرض التفاصيل</a>
+    </div>
+
+    <div class="product-card" data-brand="apple">
+      <img src="D:\website store\images\iphone\15pro.jpg" alt="Iphone 15 Pro">
+      <h3>Iphone 15 Pro</h3>
+      <p class="price">43,000 ج</p>
+      <button onclick="addToCart('Iphone 15 Pro', 43000)">أضف للسلة</button>
+      <a href="product.html?id=9" class="btn">عرض التفاصيل</a>
+    </div>
+
+    <div class="product-card" data-brand="apple">
+      <img src="D:\website store\images\iphone\15.jpg" alt="Iphone 15">
+      <h3>Iphone 15</h3>
+      <p class="price">38,000 ج</p>
+      <button onclick="addToCart('Iphone 15', 38000)">أضف للسلة</button>
+      <a href="product.html?id=10" class="btn">عرض التفاصيل</a>
+    </div>
+
+
+
+    <!-- منتجات Samsung -->
+    <div class="product-card" data-brand="samsung">
+      <img src="D:\website store\images\samsung\s24 ultra.jpg" alt="Samsung S24 Ultra">
+      <h3>Samsung S24 Ultra</h3>
+      <p class="price">48,000 ج</p>
+      <button onclick="addToCart('Samsung S24 Ultra', 48000)">أضف للسلة</button>
+      <a href="product.html?id=2" class="btn">عرض التفاصيل</a>
+    </div>
+    <div class="product-card" data-brand="samsung">
+      <img src="D:\website store\images\samsung\s25 ultra.jpg" alt="Samsung S25 Ultra">
+      <h3>Samsung S25 Ultra</h3>
+      <p class="price">63,000 ج</p>
+      <button onclick="addToCart('Samsung S25 Ultra', 63000)">أضف للسلة</button>
+       <a href="product.html?id=3" class="btn">عرض التفاصيل</a>
+    </div>
+
+    <div class="product-card" data-brand="samsung">
+      <img src="D:\website store\images\samsung\A56.jpg" alt="Samsung A56">
+      <h3>Samsung A56</h3>
+      <p class="price">21,000 ج</p>
+      <button onclick="addToCart('Samsung A56', 21000)">أضف للسلة</button>
+      <a href="product.html?id=4" class="btn">عرض التفاصيل</a>
+    </div>
+
+    <!-- منتجات Xiaomi -->
+    <div class="product-card" data-brand="xiaomi">
+      <img src="D:\website store\images\Xiaomi\Xiaomi-14.jpg" alt="Xiaomi 14">
+      <h3>Xiaomi 14</h3>
+      <p class="price">22,000 ج</p>
+      <button onclick="addToCart('Xiaomi 14', 22000)">أضف للسلة</button>
+      <a href="product.html?id=5" class="btn">عرض التفاصيل</a>
+    </div>
+    <div class="product-card" data-brand="xiaomi">
+      <img src="D:\website store\images\Xiaomi\Xiaomi-13.jpg" alt="Xiaomi 13">
+      <h3>Xiaomi 13</h3>
+      <p class="price">20,000 ج</p>
+      <button onclick="addToCart('Xiaomi 13', 20000)">أضف للسلة</button>
+      <a href="product.html?id=6" class="btn">عرض التفاصيل</a>
+    </div>
+
+    <!-- منتجات Oppo -->
+    <div class="product-card" data-brand="oppo">
+      <img src="D:\website store\images\oppo\Oppo-Reno-14.jpg" alt="Oppo Reno 14">
+      <h3>Oppo Reno 14</h3>
+      <p class="price">18,500 ج</p>
+      <button onclick="addToCart('Oppo Reno 14', 18500)">أضف للسلة</button>
+      <a href="product.html?id=7" class="btn">عرض التفاصيل</a>
+    </div>
+  <!-- منتجات Huawei -->
+   <div class="product-card" data-brand="Huawei">
+      <img src="D:\website store\images\Huawei\Huawei-P60-Pro.jpg" alt="Huawei P60 Pro">
+      <h3>Huawei P60 Pro</h3>
+      <p class="price">70,000 ج</p>
+      <button onclick="addToCart('Huawei P60 Pro', 70000)">أضف للسلة</button>
+       <a href="product.html?id=11" class="btn">عرض التفاصيل</a>
+    </div>
+
+  
+</section>
+
+
+
+
+<!-- CART PANEL -->
+<div id="cart-panel" class="cart-panel">
+  <div class="cart-header">
+    <h3>🛒 سلة المشتريات</h3>
+    <span class="close" onclick="toggleCart()">✖</span>
+  </div>
+
+  <div id="cart-items" class="cart-items">
+    <p class="empty">السلة فارغة</p>
+  </div>
+
+  <div class="cart-footer">
+    <div class="total">
+      الإجمالي: <span id="cart-total">0</span> ج
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">إتمام الشراء</button>
+  </div>
+</div>
+
+<!-- اتمام الشراء -->
+<div id="checkout-modal" class="checkout-modal">
+    <div class="checkout-content">
+        <span class="close-modal" onclick="closeCheckout()">&times;</span>
+        
+        <div class="modal-header">
+            <h2>إتمام الطلب والدفع</h2>
+        </div>
+
+        <div class="modal-body">
+            
+            <div class="section-title">1. بيانات الشحن والتواصل</div>
+            <div class="common-fields">
+                <input type="text" id="cust-name" placeholder="الاسم رباعي" required>
+                <input type="tel" id="cust-phone" placeholder="رقم الموبايل الأساسي" required>
+                <input type="email" id="cust-email" placeholder="البريد الإلكتروني (اختياري)">
+                <input type="text" id="cust-address" placeholder="العنوان بالتفصيل (المحافظة - المنطقة - الشارع)" required>
+            </div>
+
+            <div class="section-title">2. اختر وسيلة الدفع</div>
+            <div class="payment-methods-grid">
+                <label class="method-box">
+                    <input type="radio" name="payment" value="cash" checked onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <span>دفع عند الاستلام</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="valu" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <span style="font-weight:900; color:#00b894;">valU</span>
+                        <span>تقسيط فاليو</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="halan" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <span style="font-weight:900; color:#eb3b5a;">Halan</span>
+                        <span>تقسيط حالا</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="instapay" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <i class="fas fa-qrcode"></i>
+                        <span>InstaPay</span>
+                    </div>
+                </label>
+
+                <label class="method-box">
+                    <input type="radio" name="payment" value="vodafone" onchange="changePaymentMethod()">
+                    <div class="box-content">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>فودافون كاش</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="payment-details-container">
+                
+                <div id="details-cash" class="details-section active">
+                    <p class="info-msg">سيتم تحصيل المبلغ بالكامل نقداً عند توصيل الطلب لعنوانك.</p>
+                </div>
+
+                <div id="details-valu" class="details-section">
+                    <input type="text" placeholder="الاسم المسجل في فاليو">
+                    <input type="tel" placeholder="رقم موبايل حساب فاليو">
+                    <input type="number" placeholder="الرقم القومي (14 رقم)">
+                </div>
+
+                <div id="details-halan" class="details-section">
+                    <input type="text" placeholder="الاسم المسجل في حالا">
+                    <input type="tel" placeholder="رقم موبايل حساب حالا">
+                    <input type="number" placeholder="الرقم القومي (14 رقم)">
+                </div>
+
+                <div id="details-instapay" class="details-section">
+                    <p class="transfer-info">يرجى التحويل على عنوان الدفع التالي:<br> <strong>username@instapay</strong></p>
+                    <input type="text" placeholder="عنوان الدفع الخاص بك (Payment Address)">
+                    <input type="text" placeholder="رقم العملية المرجعي (Transaction ID)">
+                </div>
+
+                <div id="details-vodafone" class="details-section">
+                    <p class="transfer-info">يرجى التحويل على الرقم: <strong>010XXXXXXXX</strong></p>
+                    <input type="tel" placeholder="رقم المحفظة المحول منها">
+                    <p style="font-size:12px; color:#666;">قم بإرفاق سكرين شوت للتحويل (اختياري)</p>
+                    <input type="file" accept="image/*">
+                </div>
+
+            </div>
+
+            <div class="checkout-footer">
+                <div class="coupon-area">
+                    <input type="text" id="coupon-code" placeholder="كود الخصم">
+                    <button onclick="applyCoupon()">تطبيق</button>
+                </div>
+                <div class="total-area">
+                    <span>الإجمالي:</span>
+                    <span id="final-total">0 ج.م</span>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="submitOrder()">تأكيد الطلب الآن</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- SUPPORT SECTION -->
+<section class="support">
+  <h2>الدعم الفني</h2>
+  <p>لأي استفسار أو مشكلة، تواصل معنا عبر النموذج التالي:</p>
+
+  <form id="support-form">
+    <input type="text" placeholder="الاسم" required>
+    <input type="email" placeholder="البريد الإلكتروني" required>
+    <textarea placeholder="اكتب رسالتك هنا..." required></textarea>
+    <button type="submit">إرسال</button>
+  </form>
+</section>
+
+<!-- wISH LISTS -->
+
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 CrownMob</p>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
